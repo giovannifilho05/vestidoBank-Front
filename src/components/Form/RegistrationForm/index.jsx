@@ -22,12 +22,12 @@ export default function RegistrationForm() {
         e.preventDefault()
 
         api.post('funcionario', {
-            nome,
+            nome: name,
             cpf,
             funcao: type
         }).then(() => {
             alert('Cadastro realizado com sucesso.');
-            history.push('/');
+            // history.push('/');
         }).catch((err) => {
             console.log(err);
             alert('Erro no cadastro.');
