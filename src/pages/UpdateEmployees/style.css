@@ -1,0 +1,11 @@
+.UpdateEmployees {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.UpdateEmployees button {
+    padding: 0 15px;
+}

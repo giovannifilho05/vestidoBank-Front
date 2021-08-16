@@ -1,0 +1,9 @@
+.Select {
+    margin-bottom: 15px;
+}
+.Select label {
+    display: block;
+}
+.Select select {
+    width: 100%;
+}

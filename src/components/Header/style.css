@@ -1,0 +1,24 @@
+.Header {
+    height: 70px;
+    width: 100%;
+    padding: 10px 30px;
+    font-size: 125%;
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-secondary);
+    position: fixed;
+}
+.Header .logo {
+    text-decoration: none;
+}
+.Header .logo:visited {
+    color: var(--color-secondary);
+}
+.Header .logo .first {
+    font-weight: thin;
+}
+.Header .logo .second {
+    font-weight: bold;
+}

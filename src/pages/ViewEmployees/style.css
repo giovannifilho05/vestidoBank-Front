@@ -1,0 +1,11 @@
+.ViewEmployees {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ViewEmployees button {
+    padding: 0 15px;
+}
