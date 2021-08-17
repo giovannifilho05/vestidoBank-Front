@@ -27,7 +27,7 @@ export default function RegistrationForm() {
     function handleRegistrationEmployees(e) {
         e.preventDefault()
 
-        api.post('funcionario', {
+        api.post('funcionario/', {
             nome: name,
             cpf,
             funcao: role

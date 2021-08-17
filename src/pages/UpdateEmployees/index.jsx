@@ -11,7 +11,7 @@ export default function UpdateEmployees() {
     const [name, setName] = useState('');
     const [cpf, setCPF] = useState();
     const [role, setRole] = useState(0);
-    const [isSearchScreen, setIsSearchScreen] = useState(false)
+    const [isSearchScreen, setIsSearchScreen] = useState(true)
 
     const options = [{
         value: 0,
@@ -30,12 +30,13 @@ export default function UpdateEmployees() {
     function handleSearchEmployee(e) {
         e.preventDefault()
 
-        const url = `/funcionarios/${cpf}`
+        const url = `/funcionario/${cpf}/`
         api.get(url)
             .then((response) => {
-                const [nome, CPF, funcao] = response.data
+                console.log(response.data)
+                const {nome, cpf, funcao} = response.data
                 setName(nome)
-                setCPF(CPF)
+                setCPF(cpf)
                 setRole(funcao)
 
                 setIsSearchScreen(false)
@@ -48,9 +49,11 @@ export default function UpdateEmployees() {
     function handleUpdateEmployee(e) {
         e.preventDefault()
 
-        const url = `funcionarios/${cpf}`
+        const url = `funcionario/${cpf}/`
         api.put(url, {
             nome: name,
+            cpf,
+            funcao:role
         }).then(() => {
             alert('Funcionário atualizado.');
         }).catch((err) => {
@@ -65,8 +68,6 @@ export default function UpdateEmployees() {
         {   isSearchScreen &&
             <main className="UpdateEmployees">
                 <form onSubmit={handleSearchEmployee}>
-
-                </form>
                 <Input 
                     name="CPF"
                     label="CPF"
@@ -75,6 +76,8 @@ export default function UpdateEmployees() {
                     onChange={(e) => { setCPF(e.target.value) }}
                 />
                 <button >Buscar</button>
+
+                </form>
             </main>
         }
 
