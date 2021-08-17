@@ -11,7 +11,7 @@ export default function ViewReports() {
     const [items, setItems] = useState(['Nenhum relátorio por enquanto :('])
     
     useEffect(() => {
-        const url = '/transacao/'
+        const url = 'transacao/'
         api.get(url).then((response) => {
             handleReportsList(response.data)
         }).catch((err) => {
@@ -21,6 +21,7 @@ export default function ViewReports() {
     }, []);
 
     function handleReportsList(reports) {
+        console.log(reports)
         const reportsStrings = reports.map(() => {
 
         })

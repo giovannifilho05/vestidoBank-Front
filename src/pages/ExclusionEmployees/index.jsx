@@ -13,7 +13,7 @@ export default function ExclusionEmployees() {
 
     function handleExclusionEmployees(e) {
         e.preventDefault()
-        const url = `funcionario/${cpf}/`
+        const url = `funcionario/${('' + cpf).replace(/[^0-9]/g, '')}/`
         api.delete(url).then(() => {
             alert('Excluído com sucesso.');
         }).catch((err) => {

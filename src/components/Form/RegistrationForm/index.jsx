@@ -31,7 +31,7 @@ export default function RegistrationForm() {
 
         api.post('funcionario/', {
             nome: name,
-            cpf,
+            cpf:('' + cpf).replace(/[^0-9]/g, ''),
             funcao: role
         }).then(() => {
             alert('Cadastro realizado com sucesso.');
