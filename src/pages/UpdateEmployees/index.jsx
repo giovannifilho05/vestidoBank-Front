@@ -53,7 +53,7 @@ export default function UpdateEmployees() {
         const url = `funcionario/${('' + cpf).replace(/[^0-9]/g, '')}/`
         api.put(url, {
             nome: name,
-            cpf: newCPF,
+            cpf: ('' + newCPF).replace(/[^0-9]/g, ''),
             funcao:role
         }).then(() => {
             alert('Funcionário atualizado.');
