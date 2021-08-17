@@ -6,6 +6,12 @@
     align-items: center;
 }
 
-.ViewEmployees button {
+.ViewEmployees form {
+    width: 177px;
+}
+
+.ViewEmployees form button {
+    width: 177px;
+    margin-bottom: 2px;
     padding: 0 15px;
 }

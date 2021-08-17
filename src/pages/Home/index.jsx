@@ -8,7 +8,7 @@ export default function Home() {
    return (
     <main>
         <PrimaryButton to="/manageEmployees">Gerenciar Funcionários</PrimaryButton>
-        <PrimaryButton to="/">Visualizar Relátorios</PrimaryButton>
+        <PrimaryButton to="/viewReports">Visualizar Relátorios</PrimaryButton>
     </main>
    );
 }

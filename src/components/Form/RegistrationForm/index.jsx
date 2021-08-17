@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 
 import api from '../../../services/api'
 
+import CPFMask from '../../../utils/CPFMask'
+
 import Input from '../components/Input'
 import Select from '../components/Select'
 
 export default function RegistrationForm() {
     const [name, setName] = useState('');
-    const [cpf, setCPF] = useState();
+    const [cpf, setCPF] = useState('');
     const [role, setRole] = useState(0);
 
     const options = [{
@@ -40,6 +42,10 @@ export default function RegistrationForm() {
         });
     }
 
+    function handleCPF(CPF) {
+        setCPF(CPFMask(('' + CPF).replace(/[^0-9]/g, '')))
+    }
+
     return (
         <form onSubmit={handleRegistrationEmployees}>
             <Input 
@@ -52,12 +58,12 @@ export default function RegistrationForm() {
                 name="CPF"
                 label="CPF"
                 value={cpf}
-                type="number"
-                onChange={(e) => { setCPF(e.target.value) }}
+                type="text"
+                onChange={(e) => { handleCPF(e.target.value) }}
             />
 
             <Select
-                name="Tipo"
+                name="tipo"
                 label="Selecione o tipo"
                 value={role}
                 options = {options}

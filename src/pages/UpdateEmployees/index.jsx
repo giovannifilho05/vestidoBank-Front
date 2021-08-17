@@ -5,11 +5,13 @@ import Select from '../../components/Form/components/Select'
 
 import api from '../../services/api'
 
+import CPFMask from '../../utils/CPFMask'
+
 import './style.css'
 
 export default function UpdateEmployees() {
     const [name, setName] = useState('');
-    const [cpf, setCPF] = useState();
+    const [cpf, setCPF] = useState('');
     const [role, setRole] = useState(0);
     const [isSearchScreen, setIsSearchScreen] = useState(true)
 
@@ -60,6 +62,10 @@ export default function UpdateEmployees() {
         });
     }
 
+    function handleCPF(CPF) {
+        setCPF(CPFMask(('' + CPF).replace(/[^0-9]/g, '')))
+    }
+
     return (
         <>
         
@@ -70,8 +76,8 @@ export default function UpdateEmployees() {
                         name="CPF"
                         label="CPF"
                         value={cpf}
-                        type="number"
-                        onChange={(e) => { setCPF(e.target.value) }}
+                        type="text"
+                        onChange={(e) => { handleCPF(e.target.value) }}
                     />
                     <button >Buscar</button>
                 </form>

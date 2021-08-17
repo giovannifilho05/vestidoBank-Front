@@ -2,12 +2,14 @@ import React,{ useState } from 'react';
 
 import Input from '../../components/Form/components/Input'
 
+import CPFMask from '../../utils/CPFMask'
+
 import api from '../../services/api'
 
 import './style.css'
 
 export default function ExclusionEmployees() {
-    const [cpf, setCPF] = useState();
+    const [cpf, setCPF] = useState('');
 
     function handleExclusionEmployees(e) {
         e.preventDefault()
@@ -20,6 +22,10 @@ export default function ExclusionEmployees() {
         });
     }
     
+    function handleCPF(CPF) {
+        setCPF(CPFMask(('' + CPF).replace(/[^0-9]/g, '')))
+    }
+
     return (
         <main className="ExclusionEmployees">
             <form onSubmit={handleExclusionEmployees}>
@@ -27,8 +33,8 @@ export default function ExclusionEmployees() {
                     name="CPF"
                     label="CPF"
                     value={cpf}
-                    type="number"
-                    onChange={(e) => { setCPF(e.target.value) }}
+                    type="text"
+                    onChange={(e) => { handleCPF(e.target.value) }}
                 />
                 <button>Excluir</button>
             </form>

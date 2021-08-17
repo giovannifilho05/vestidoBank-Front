@@ -8,6 +8,7 @@ import RegistrarionEmployees from "./pages/RegistrationEmployees";
 import ExclusionEmployees from "./pages/ExclusionEmployees";
 import ViewEmployees from "./pages/ViewEmployees";
 import UpdateEmployees from "./pages/UpdateEmployees";
+import ViewReports from "./pages/ViewReports";
 
 const Routes = () => {
    return(
@@ -19,6 +20,12 @@ const Routes = () => {
             <Route component = { ExclusionEmployees }  path="/manageEmployees/exclusionEmployees" exact />
             <Route component = { ViewEmployees }  path="/manageEmployees/viewEmployees" exact />
             <Route component = { UpdateEmployees }  path="/manageEmployees/updateEmployees" exact />
+            <Route component = { ViewReports }  path="/viewReports" exact />
+            <Route path='/snake' component={() => { 
+                alert('Easter Egg found!')
+                window.location.href = 'https://snake.googlemaps.com/'; 
+                return null;
+            }}/>
        </BrowserRouter>
    )    
 }
