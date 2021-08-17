@@ -12,6 +12,7 @@ import './style.css'
 export default function UpdateEmployees() {
     const [name, setName] = useState('');
     const [cpf, setCPF] = useState('');
+    const [newCPF, setNewCPF] = useState('');
     const [role, setRole] = useState(0);
     const [isSearchScreen, setIsSearchScreen] = useState(true)
 
@@ -32,11 +33,11 @@ export default function UpdateEmployees() {
     function handleSearchEmployee(e) {
         e.preventDefault()
 
-        const url = `funcionario/${cpf}/`
+        const url = `funcionario/${('' + cpf).replace(/[^0-9]/g, '')}/`
         api.get(url).then((response) => {
-            const {nome, CPF, funcao} = response.data
+            const {nome, cpf, funcao} = response.data
             setName(nome)
-            setCPF(CPF)
+            setNewCPF(cpf)
             setRole(funcao)
 
             setIsSearchScreen(false)
@@ -49,10 +50,10 @@ export default function UpdateEmployees() {
     function handleUpdateEmployee(e) {
         e.preventDefault()
 
-        const url = `funcionario/${cpf}/`
+        const url = `funcionario/${('' + cpf).replace(/[^0-9]/g, '')}/`
         api.put(url, {
             nome: name,
-            cpf,
+            cpf: newCPF,
             funcao:role
         }).then(() => {
             alert('Funcionário atualizado.');
@@ -64,6 +65,10 @@ export default function UpdateEmployees() {
 
     function handleCPF(CPF) {
         setCPF(CPFMask(('' + CPF).replace(/[^0-9]/g, '')))
+    }
+
+    function handleNewCPF(CPF) {
+        setNewCPF(CPFMask(('' + CPF).replace(/[^0-9]/g, '')))
     }
 
     return (
@@ -97,9 +102,9 @@ export default function UpdateEmployees() {
                     <Input 
                         name="CPF"
                         label="CPF"
-                        value={cpf}
-                        type="number"
-                        onChange={(e) => { setCPF(e.target.value) }}
+                        value={newCPF}
+                        type="text"
+                        onChange={(e) => { handleNewCPF(e.target.value) }}
                     />
 
                     <Select

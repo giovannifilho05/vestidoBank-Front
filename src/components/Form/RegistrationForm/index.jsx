@@ -35,7 +35,6 @@ export default function RegistrationForm() {
             funcao: role
         }).then(() => {
             alert('Cadastro realizado com sucesso.');
-            // history.push('/');
         }).catch((err) => {
             console.log(err);
             alert('Erro no cadastro.');

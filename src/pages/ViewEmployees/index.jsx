@@ -10,7 +10,7 @@ import './style.css'
 
 export default function ViewEmployees() {
     const [cpf, setCPF] = useState('');
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState(['Ainda não foi carregado nenhum funcionário'])
     const [isSearchScreen, setIsSearchScreen] = useState(true)
 
     const options = [{
@@ -30,7 +30,7 @@ export default function ViewEmployees() {
     function handleSearch(e) {
         e.preventDefault()
 
-        const url = `funcionario/${cpf}/`
+        const url = `funcionario/${('' + cpf).replace(/[^0-9]/g, '')}/`
         api.get(url).then((response) => {
             const data = response.data
             setItems(handleEmployeesList([data]))
@@ -59,7 +59,7 @@ export default function ViewEmployees() {
 
     function handleEmployeesList(employees) {
         const employeesStrings = employees.map(({nome, cpf, funcao}) => {
-            return `Nome: ${nome}; CPF: ${cpf}; Função: ${options[funcao]}`
+            return `Nome: ${nome}; CPF: ${cpf}; Função: ${options[funcao].label}`
         })
 
         setItems(employeesStrings)
