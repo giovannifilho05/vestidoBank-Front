@@ -9,11 +9,23 @@ import './style.css'
 
 export default function ViewReports() {
     const [items, setItems] = useState(['Nenhum relátorio por enquanto :('])
+
+    const types = [{
+        label: 'PIX',
+        value: 0
+    },{
+        label: 'TED',
+        value: 1
+    },{
+        label: 'DOC',
+        value: 2
+    }]
     
     useEffect(() => {
         const url = 'transacao/'
         api.get(url).then((response) => {
-            handleReportsList(response.data)
+            const data = response.data
+            setItems(handleReportsList(data))
         }).catch((err) => {
             console.log(err);
             alert('Os relátorios não pode ser buscado.');
@@ -22,11 +34,9 @@ export default function ViewReports() {
 
     function handleReportsList(reports) {
         console.log(reports)
-        const reportsStrings = reports.map(() => {
-
+        return reports.map(({from_cliente, to_cliente, data, type, value}) => {
+            return `De: ${from_cliente}; Para: ${to_cliente}; Data: ${data}; Tipo: ${types[type].label}; Valor: R$${value}`
         })
-
-        setItems(reportsStrings)
     }
 
     return(
