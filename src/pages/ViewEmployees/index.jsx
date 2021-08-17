@@ -58,11 +58,9 @@ export default function ViewEmployees() {
     }
 
     function handleEmployeesList(employees) {
-        const employeesStrings = employees.map(({nome, cpf, funcao}) => {
+        return employees.map(({nome, cpf, funcao}) => {
             return `Nome: ${nome}; CPF: ${cpf}; Função: ${options[funcao].label}`
         })
-
-        setItems(employeesStrings)
     }
 
     function handleCPF(CPF) {
