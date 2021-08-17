@@ -7,10 +7,10 @@ import './style.css'
 export default function ManageEmployees() {
     return (
         <main>
-            <PrimaryButton to="/manageEmployees/registrarionEmployees">Cadastrar Funcionário</PrimaryButton>
-            <PrimaryButton to="/manageEmployees/exclusionEmployees">Excluir Funcionário</PrimaryButton>
-            <PrimaryButton to="/manageEmployees/viewEmployees">Visualizar Funcionário</PrimaryButton>
-            <PrimaryButton to="/manageEmployees/updateEmployees">Atualizar Funcionário</PrimaryButton>
+            <PrimaryButton to="/manageEmployees/registrarionEmployees">CREATE Funcionário</PrimaryButton>
+            <PrimaryButton to="/manageEmployees/viewEmployees">READ Funcionário</PrimaryButton>
+            <PrimaryButton to="/manageEmployees/updateEmployees">UPDATE Funcionário</PrimaryButton>
+            <PrimaryButton to="/manageEmployees/exclusionEmployees">DELETE Funcionário</PrimaryButton>
         </main>
     );
 }
