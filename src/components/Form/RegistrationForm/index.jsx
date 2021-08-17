@@ -8,14 +8,20 @@ import Select from '../components/Select'
 export default function RegistrationForm() {
     const [name, setName] = useState('');
     const [cpf, setCPF] = useState();
-    const [type, setType] = useState('');
+    const [role, setRole] = useState(0);
 
     const options = [{
         value: 0,
         label: 'Caixa'
     },{
         value: 1,
-        label: 'Atendente'
+        label: 'Ajudante'
+    },{
+        value: 2,
+        label: 'Segurança'
+    },{
+        value: 3,
+        label: 'Segurador'
     }]
 
     function handleRegistrationEmployees(e) {
@@ -24,7 +30,7 @@ export default function RegistrationForm() {
         api.post('funcionario', {
             nome: name,
             cpf,
-            funcao: type
+            funcao: role
         }).then(() => {
             alert('Cadastro realizado com sucesso.');
             // history.push('/');
@@ -53,9 +59,9 @@ export default function RegistrationForm() {
             <Select
                 name="Tipo"
                 label="Selecione o tipo"
-                value={type}
+                value={role}
                 options = {options}
-                onChange={(e) => { setType(e.target.value) }}
+                onChange={(e) => { setRole(e.target.value) }}
             />
 
             <button>Cadastrar</button>

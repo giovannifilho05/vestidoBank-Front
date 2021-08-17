@@ -1,0 +1,6 @@
+.List .item {
+    min-width: 400px;
+    padding: 10px 15px;
+    background-color: #8080808e;
+    margin-bottom: 5px;
+}
