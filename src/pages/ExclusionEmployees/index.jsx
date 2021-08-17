@@ -12,13 +12,12 @@ export default function ExclusionEmployees() {
     function handleExclusionEmployees(e) {
         e.preventDefault()
         const url = `funcionario/${cpf}`
-        api.delete(url)
-            .then(() => {
-                alert('Excluído com sucesso.');
-            }).catch((err) => {
-                console.log(err);
-                alert('Erro ao excluir.');
-            });
+        api.delete(url).then(() => {
+            alert('Excluído com sucesso.');
+        }).catch((err) => {
+            console.log(err);
+            alert('Erro ao excluir.');
+        });
     }
     
     return (

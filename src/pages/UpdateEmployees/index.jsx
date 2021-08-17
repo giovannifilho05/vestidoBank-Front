@@ -11,7 +11,7 @@ export default function UpdateEmployees() {
     const [name, setName] = useState('');
     const [cpf, setCPF] = useState();
     const [role, setRole] = useState(0);
-    const [isSearchScreen, setIsSearchScreen] = useState(false)
+    const [isSearchScreen, setIsSearchScreen] = useState(true)
 
     const options = [{
         value: 0,
@@ -30,25 +30,24 @@ export default function UpdateEmployees() {
     function handleSearchEmployee(e) {
         e.preventDefault()
 
-        const url = `/funcionarios/${cpf}`
-        api.get(url)
-            .then((response) => {
-                const [nome, CPF, funcao] = response.data
-                setName(nome)
-                setCPF(CPF)
-                setRole(funcao)
+        const url = `funcionario/${cpf}/`
+        api.get(url).then((response) => {
+            const {nome, CPF, funcao} = response.data
+            setName(nome)
+            setCPF(CPF)
+            setRole(funcao)
 
-                setIsSearchScreen(false)
-            }).catch((err) => {
-                console.log(err);
-                alert('Erro ao buscar.');
-            });
+            setIsSearchScreen(false)
+        }).catch((err) => {
+            console.log(err);
+            alert('Erro ao buscar.');
+        });
     }
     
     function handleUpdateEmployee(e) {
         e.preventDefault()
 
-        const url = `funcionarios/${cpf}`
+        const url = `funcionario/${cpf}/`
         api.put(url, {
             nome: name,
         }).then(() => {
@@ -65,16 +64,15 @@ export default function UpdateEmployees() {
         {   isSearchScreen &&
             <main className="UpdateEmployees">
                 <form onSubmit={handleSearchEmployee}>
-
+                    <Input 
+                        name="CPF"
+                        label="CPF"
+                        value={cpf}
+                        type="number"
+                        onChange={(e) => { setCPF(e.target.value) }}
+                    />
+                    <button >Buscar</button>
                 </form>
-                <Input 
-                    name="CPF"
-                    label="CPF"
-                    value={cpf}
-                    type="number"
-                    onChange={(e) => { setCPF(e.target.value) }}
-                />
-                <button >Buscar</button>
             </main>
         }
 
