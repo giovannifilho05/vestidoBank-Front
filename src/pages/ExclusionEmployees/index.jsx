@@ -11,7 +11,7 @@ export default function ExclusionEmployees() {
 
     function handleExclusionEmployees(e) {
         e.preventDefault()
-        const url = `funcionario/${cpf}`
+        const url = `funcionario/${cpf}/`
         api.delete(url).then(() => {
             alert('Excluído com sucesso.');
         }).catch((err) => {

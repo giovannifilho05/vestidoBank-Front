@@ -50,6 +50,8 @@ export default function UpdateEmployees() {
         const url = `funcionario/${cpf}/`
         api.put(url, {
             nome: name,
+            cpf,
+            funcao:role
         }).then(() => {
             alert('Funcionário atualizado.');
         }).catch((err) => {
